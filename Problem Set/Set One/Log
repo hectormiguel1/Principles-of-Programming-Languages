@@ -1,0 +1,40 @@
+Commits 01/7/2020
+    Attempting to get git integration working with IDE
+Commits 01/8/2020
+    Further Testing on IDE 
+    Starting working on Sample problems
+    Did hello World Program.  Commit : e00404b14cedadc6a894784ce59b59ea3f17a567
+    Started Working on Read Names Recursively Commit: 69ebdb66c5c69c77fdceac988a482e6fc76c9524
+    Completed Work from above Commit: 118098038b4670e501f6316fe33f1cf9fb92448e
+    Further working on Sample problems 
+    Worked up to problem # 5 in Sample Problems Commit: 779621048f4a8925b47d75a337e000a6335d6dac
+Commits 01/13/2020
+    Worked with finding the biggest element with in the list,
+    Ran into issue with stack overflow due to importer indentation
+     and function calls, forgot t add the (). Added comments for better 
+     Code readability.  Commit: 0c9fe9ab23b8acccd31c2a85f351edfed5d3160b
+Commits 01/16/2020
+    Further work on the sample problems      
+    Worked all the way up to the check if an element exists on a list Commit: 56e146d0aca95f1af123ef94db88af6a16fa0d50
+Commits 01/22/2020
+    Further work on the Sample problems 
+    kept running into stack overflows with the 
+    Multiplication and Addition problem, it was due to a missing () before
+    the recursive call. Commit: e9a89c633e0389186cf017686157c989ad9e2a0d 
+    Started working on the multiplication table form  1-12 
+    The biggest problem encountered in this section is getting the 
+    print to actually do a square instead of a pyramid of products. 
+    Finally fixed the issue and added some lines to separate the rows in the 
+    Multiplication table Commit: 5a7877749932e25720b0bd808c69a573b5f2b49b 
+    As well as adding comment to make the code more readable: Commit:  7ae7b96eb13e62c0449ec1b738333ae1c8777966
+    Worked on the next 30 Primes Primes, was simplier than Multiplication Table:  Commit: 46a26acf415c1cce27885ace741ce2978af3966b
+    Completed the leap year problem, it was simple taking into account the rules. 
+    Fixed a of by 1 error on the leap year. Commit: c1b782d331ddd9728ac7691ea74a4d36a2da9e10
+    Created a make file to make it easy to compile and run individual f# files 
+Commits 01/22/2020
+    All of the commits from this day are answering the questions from the Problem Set 1 (1-22) 
+Commits 01/27/2020
+    All of the commits from this day are answering the questions from the Problem Set 1 (Remainder) 
+
+
+    

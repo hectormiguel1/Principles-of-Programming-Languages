@@ -1,0 +1,209 @@
+1. Which of the following F# expressions is not well typed? Select one:
+C. 4 + 5.6 -> F# does not do type coercion. 
+
+2. A curried function has a type of which form? Select one:
+C. t1 -> (t2 -> t3) -> Curried functions are like half built functions, you take in one
+parameter and return a function which takes in another parameter. 
+
+3. If an F# function has type 'a -> 'b when 'a : comparison, which of the following is not a legal type for it? Select one:
+B. string -> (int -> int) -> This is the signature of a carried function which accepts parameter string and returns
+a function which takes in an int and returns an int. (see Examples/#3-test.fs)
+
+4. Which of the following statements about F# lists is not true? Select one:
+D. They can be heterogeneous -> F# lists must all be the same data type. (int, float, doable, string, 'a)
+                                No Mitch and matching allowed. 
+5. Which of the following F# expressions evaluates to [1; 2; 3]? Select one:
+a. 1::2::3::[] -> This will create an int list with 1,2,3 in that order, B,C error out and D creates a int list list 
+                    (Look at Examples\#5-test.fs for more information) 
+                    
+6. How does F# interpret the expression List.map List.head foo @ baz? Select one:
+D. (List.map (List.Head foo)) @ baz -> F# Function associations are stronger than in-between association, therefor 
+                                        foo will first be matched with List.head which will then map with List.map which 
+                                        at the end will match with the append (@) operator.  F# first needs to know what the 
+                                        left hand side of the operator is before executing. 
+                                        
+7. How does F# interpret the type int * bool -> string list? Select one:
+D. (int * bool) -> (string list) -> the * denotes a touple which means that int * bool is the tuple parameter to the 
+                                    function, the function returns a string list.  
+
+8. Let F# function foo be defined as follows:
+   let rec foo = function
+   	    | (xs, [])    -> xs
+   	    | (xs, y::ys) -> foo (xs@[y], ys)
+   If foo is supposed to append its two list parameters, which of the following is true? Select one:
+A. foo satisfies all three steps of the Checklist for Programming with Recursion.
+    -> 1. base case is covered (list y is empty) 
+    -> 2. we are assuming that the recursive call is going to work
+    -> 3. we are making it smaller only the tail of list y is passed to recursive call 
+        
+9. Which of the following is the type that F# infers for (fun f -> f 17)? Select one:
+C. (int -> 'a) -> 'a -> See Examples\#9-test.fs
+
+10. Which of the following has type int -> int list? Select one: 
+D. fun x -> x::[5] -> the int x is inserted in front of list [5], last statements is the return of the function :: returns the new list 
+
+11. What type does F# infer for the expression (3, [], true) ? Select one:
+A. int * 'a list * bool -> tuple expression as int, empty list (which is generic), boolean 
+
+12. What type does F# infer for the expression fun x y -> x+y+"." ? Select one:
+D. int -> int -> string -> Parameters do not have the (,) so they are not being passed as a tuple. 
+
+13. What type does F# infer for the expression fun xs -> List.map (+) xs ? Select one:
+D. int list -> (int -> int) list -> Int list is the parameter being passed in, List map will return a list once the 
+    passed function has been applied to the list, we are passing in a int -> int function (+) 
+
+14. Which of the following does F# infer to have type string -> string -> string ? Select one:
+(#15 : B) fun x y -> x + " " + y -> Answer was given in class, you explained that #14 had an error and that the answer was 15 B
+
+15. Which of the following does F# infer to have type (string -> string) -> string ? Select one:
+C. fun f -> f (f "cat") -> Fun F expects f to be a function from string -> string, therefor it is the only option 
+                            (See Examples\#15-test.fs) 
+                
+16. A fraction like 2/3 can be represented in F# as a pair of type int * int. Define infix operators .+ and .* to do addition and multiplication of fractions:
+      > (1,2) .+ (1,3);;
+    	    val it : int * int = (5, 6)
+    	    > (1,2) .+ (2,3) .* (3,7);;
+    	    val it : int * int = (11, 14)
+    Note that the F# syntax for defining such an infix operator looks like this:
+      let (.+) (a,b) (c,d) = ...
+    Also note that .+ and .* get the same precedences as + and *, respectively, which is why the second example above gives the result it does.
+    Finally, note that your functions should always return fractions in lowest terms. To implement this, you will need an auxiliary function to calculate the gcd (greatest common divisor) of the numerator and the denominator; this can be done very efficiently using Euclid's algorithm, which can be implemented in F# as follows:
+    
+      let rec gcd = function
+    	    | (a,0) -> a
+    	    | (a,b) -> gcd (b, a % b)
+    Answered, see Examples\#16.fs for answer 
+    
+17. Write an F# function revlists xs that takes a list of lists xs and reverses all the sub-lists:
+      > revlists [[0;1;1];[3;2];[];[5]];;
+    	    val it : int list list = [[1; 1; 0]; [2; 3]; []; [5]]
+    Hint: This takes just one line of code, using List.map and List.rev.
+    Answered see Examples\#17.fs for result 
+    
+18. Write an F# function interleave(xs,ys) that interleaves two lists:
+      > interleave ([1;2;3],[4;5;6]);;
+    	    val it : int list = [1; 4; 2; 5; 3; 6]
+    Assume that the two lists have the same length.
+    Answered see Examples\#18.fs
+
+19. Write an F# function cut xs that cuts a list into two equal parts:
+      > cut [1;2;3;4;5;6];;
+    	    val it : int list * int list = ([1; 2; 3], [4; 5; 6])
+    Assume that the list has even length.
+    To implement cut, first define an auxiliary function gencut(n, xs) that cuts xs into two pieces, where n gives the size of the first piece:
+    
+      > gencut(2, [1;3;4;2;7;0;9]);;
+    	    val it : int list * int list = ([1; 3], [4; 2; 7; 0; 9])
+    Paradoxically, although gencut is more general than cut, it is easier to write! (This is an example of Polya's Inventor's Paradox: "The more ambitious plan may have more chances of success.")
+    
+    Another Hint: To write gencut efficiently, it is quite convenient to use F#'s local let expression (as in the cos_squared example in the Notes).
+    Answered see Examples\#19.fs
+
+20. Write an F# function shuffle xs that takes an even-length list, cuts it into two equal-sized pieces, and then interleaves the pieces:
+      > shuffle [1;2;3;4;5;6;7;8];;
+    	    val it : int list = [1; 5; 2; 6; 3; 7; 4; 8]
+    (On a deck of cards, this is called a perfect out-shuffle.)
+    Answered: see Examples\#20.fs
+    
+21. Write an F# function countshuffles n that counts how many calls to shuffle on a deck of n distinct "cards" it takes to put the deck back into its original order:
+      > countshuffles 4;;
+    	    val it : int = 2
+    (To see that this result is correct, note that shuffle [1;2;3;4] = [1;3;2;4], and shuffle [1;3;2;4] = [1;2;3;4].) What is countshuffles 52?
+    Hint: Define an auxiliary function countaux(deck, target) that takes two lists and returns the number of shuffles it takes to make deck equal to target.
+    Answered: Se Examples\#21.fs
+    
+22. Write an uncurried F# function cartesian (xs, ys) that takes as input two lists xs and ys and returns a list of pairs that represents the Cartesian product of xs and ys. (The pairs in the Cartesian product may appear in any order.) For example,
+          > cartesian (["a"; "b"; "c"], [1; 2]);;
+        	    val it : (string * int) list =
+        	    [("a", 1); ("b", 1); ("c", 1); ("a", 2); ("b", 2); ("c", 2)]
+     Answered: See Examples\#22.fs
+     
+23. An F# list can be thought of as representing a set, where the order of the elements in the list is irrelevant. Write an F# function powerset such that powerset set returns the set of all subsets of set. For example,
+      > powerset [1;2;3];;
+    	    val it : int list list
+    	    = [[]; [3]; [2]; [2; 3]; [1]; [1; 3]; [1; 2]; [1; 2; 3]]
+    	  
+    Note that you can order the elements of the powerset however you wish.
+    Answered see Examples\#23.fs
+    
+24. The transpose of a matrix M is the matrix obtained by reflecting Mabout its diagonal. For example, the transpose of
+     / 1 2 3 \
+     \ 4 5 6 /
+    	  
+    is
+     / 1 4 \
+     | 2 5 |
+     \ 3 6 /
+    	  
+    An m-by-n matrix can be represented in F# as a list of m rows, each of which is a list of length n. For example, the first matrix above is represented as the list
+      [[1;2;3];[4;5;6]]
+    	  
+    Write an efficient F# function to compute the transpose of an m-by-nmatrix:
+      > transpose [[1;2;3];[4;5;6]];;
+    	    val it : int list list = [[1; 4]; [2; 5]; [3; 6]]
+    	  
+    Assume that all the rows in the matrix have the same length.
+    Answered see Examples\#24.fs
+    
+25. In this problem and the next, I ask you to analyze code, as discussed in the last section of the Checklist. Suppose we wish to define an F# function to sort a list of integers into non-decreasing order. For example, we would want the following behavior:
+      > sort [3;1;4;1;5;9;2;6;5];;
+    	    val it : int list = [1; 1; 2; 3; 4; 5; 5; 6; 9]
+    	  
+    We might try the following definition:
+      let rec sort = function
+    	    | []         -> []
+    	    | [x]        -> [x]
+    	    | x1::x2::xs -> if x1 <= x2 then x1 :: sort (x2::xs)
+                else x2 :: sort (x1::xs)
+    	  
+    Analyze the correctness of this definition with respect to the Checklist for Programming with Recursion, being sure to address all three Steps.
+    Step 1: all base cases: All base cases are identified, when there is an empty list, one item, or more than one item.
+    Step 2: the non-base cases: Non base cases are returning the correct answer and are assuming that the recursive call works 
+    Step 3: Smaller input on recursive call: Each recursive call is made on a smaller input 
+    Step 4: All cases are covered: All cases are covered with the bas and the non base cases. 
+    
+26. Here is an attempt to write mergesortin F#:
+      let rec merge = function
+    	    | ([], ys)       -> ys
+    	    | (xs, [])       -> xs
+    	    | (x::xs, y::ys) -> if x < y then x :: merge (xs, y::ys)
+                else y :: merge (x::xs, ys)
+    
+    	    let rec split = function
+    	    | []       -> ([], [])
+    	    | [a]      -> ([a], [])
+    	    | a::b::cs -> let (M,N) = split cs
+                (a::M, b::N)
+    
+    	    let rec mergesort = function
+    	    | []  -> []
+    	    | L   -> let (M, N) = split L
+                merge (mergesort M, mergesort N)
+    	  
+   a. Analyze mergesort with respect to the Checklist for Programming with Recursion, again addressing all three Steps. (Assume that merge and split both work correctly, as indeed they do.)
+   b. Enter this program into F# and see what type F# infers for mergesort. Why is this type a clue that something is wrong with mergesort?
+      Based on your analysis, correct the bug in mergesort.
+      Section A: 
+            Step: Cover all base cases: Not all base cases are taken into account  
+
+27. Recall the unambiguous grammar for arithmetic expressions discussed in class:
+      
+    	    E -> E+T | E-T | T
+    	    T -> T*F | T/F | F
+    	    F -> i | (E)
+    Modify this grammar to allow an exponentiation operator, ^, so that we can write expressions like i+i^i*i. Of course, your modified grammar should be unambiguous. Give exponentiation higher precedence than the other binary operators and (unlike the other binary operators) make it associate to the right.
+        E -> E+T | E-T | T
+        T -> T*P | T/P | P
+        P -> F^P | F
+        F -> i | (E)
+       
+28. Consider the grammar for the a language that has if-then, if-then-else, begin-end block, and print statements:
+      
+    	    S -> if E then S | if E then S else S | begin S L | print E
+    	    L -> end | ; S L
+    	    E -> i
+    	  
+    Show that the grammar is ambiguous.
+    if i then ( if i then print i   else print i ; )
+    if i then ( if i then print i ) else print i ;
+    The same string can be interpreted in different ways 

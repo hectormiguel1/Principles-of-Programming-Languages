@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/.Rider2019.3/system/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.Rider2019.3/system/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_.19.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Examples" t="Include">
+        <e p="#13-test.fs" t="Include" />
+        <e p="#15-test.fs" t="Include" />
+        <e p="#16.fs" t="Include" />
+        <e p="#17.fs" t="Include" />
+        <e p="#18.fs" t="Include" />
+        <e p="#19.fs" t="Include" />
+        <e p="#20.fs" t="Include" />
+        <e p="#21.fs" t="Include" />
+        <e p="#22.fs" t="Include" />
+        <e p="#23.fs" t="Include" />
+        <e p="#24.fs" t="Include" />
+        <e p="#26.fs" t="Include" />
+        <e p="#3-test.fs" t="Include" />
+        <e p="#5-test.fs" t="Include" />
+        <e p="#9-test.fs" t="Include" />
+        <e p="Add-Or-Sum.fs" t="Include" />
+        <e p="Find-Element.fs" t="Include" />
+        <e p="Hello-World.fs" t="Include" />
+        <e p="Leap-Years.fs" t="Include" />
+        <e p="Multiplication-Table.fs" t="Include" />
+        <e p="Prime-Numbers.fs" t="Include" />
+        <e p="Read-Name.fs" t="Include" />
+        <e p="Read-Names-Recursive.fs" t="Include" />
+        <e p="Return-Largest-In-List.fs" t="Include" />
+        <e p="Reverse-List.fs" t="Include" />
+        <e p="Sum-Multiple-Three.fs" t="Include" />
+        <e p="Sum-One-To-N.fs" t="Include" />
+      </e>
+      <e p="Set One.fsproj" t="IncludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

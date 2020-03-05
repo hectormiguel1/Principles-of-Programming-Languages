@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/.Rider2019.3/system/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.Rider2019.3/system/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_Set Two.1961130765.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="Set Two" t="IncludeRecursive">
+        <e p="Question 10.fs" t="Include" />
+        <e p="Question 11.fs" t="Include" />
+        <e p="Question 12.fs" t="Include" />
+        <e p="Question 2.fs" t="Include" />
+        <e p="Question 4.fs" t="Include" />
+        <e p="Question 5.fs" t="Include" />
+        <e p="Question 6.fs" t="Include" />
+        <e p="Question 9.fs" t="Include" />
+        <e p="Question_1.fs" t="Include" />
+        <e p="Question_13_1.fs" t="Include" />
+        <e p="Question_3.fs" t="Include" />
+        <e p="Questions" t="Include" />
+        <e p="Set Two.fsproj" t="IncludeRecursive" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+      </e>
+      <e p="Set Two.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

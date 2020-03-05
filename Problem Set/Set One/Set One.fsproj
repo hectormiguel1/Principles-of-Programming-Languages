@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net45</TargetFramework>
+        <RootNamespace>SetOne</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FSharp.NET.Sdk" Version="1.0.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Include="Examples\Hello-World.fs" />
+      <Compile Include="Examples\Read-Name.fs" />
+      <Compile Include="Examples\Read-Names-Recursive.fs" />
+      <Compile Include="Examples\Sum-One-To-N.fs" />
+      <Compile Include="Examples\Sum-Multiple-Three.fs" />
+      <Compile Include="Examples\Return-Largest-In-List.fs" />
+      <Compile Include="Examples\Reverse-List.fs" />
+      <Compile Include="Examples\Find-Element.fs" />
+      <Compile Include="Examples\Add-Or-Sum.fs" />
+      <Compile Include="Examples\Multiplication-Table.fs" />
+      <Compile Include="Examples\Prime-Numbers.fs" />
+      <Compile Include="Examples\Leap-Years.fs" />
+      <Compile Include="Examples\#3-test.fs" />
+      <Compile Include="Examples\#5-test.fs" />
+      <Compile Include="Examples\#9-test.fs" />
+      <Compile Include="Examples\#13-test.fs" />
+      <Compile Include="Examples\#15-test.fs" />
+      <Compile Include="Examples\#16.fs" />
+      <Compile Include="Examples\#17.fs" />
+      <Compile Include="Examples\#18.fs" />
+      <Compile Include="Examples\#19.fs" />
+      <Compile Include="Examples\#20.fs" />
+      <Compile Include="Examples\#21.fs" />
+      <Compile Include="Examples\#22.fs" />
+      <Compile Include="Examples\#23.fs" />
+      <Compile Include="Examples\#24.fs" />
+      <Compile Include="Examples\#26.fs" />
+    </ItemGroup>
+
+</Project>

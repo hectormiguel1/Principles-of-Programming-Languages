@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <RootNamespace>Set_Two</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Content Include="Questions" />
+      <Compile Include="Question_1.fs" />
+      <Compile Include="Question 2.fs" />
+      <Compile Include="Question_3.fs" />
+      <Compile Include="Question 4.fs" />
+      <Compile Include="Question 5.fs" />
+      <Compile Include="Question 6.fs" />
+      <Compile Include="Question 9.fs" />
+      <Compile Include="Question 10.fs" />
+      <Compile Include="Question 11.fs" />
+      <Compile Include="Question 12.fs" />
+      <Compile Include="Question_13_1.fs" />
+    </ItemGroup>
+
+</Project>
