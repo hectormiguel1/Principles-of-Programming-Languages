@@ -249,3 +249,4 @@ Write the syntax checker using F#, but you may only use functional programming a
     13. Building Parse Trees      
             Modify problem 3 so that it builds a parse tree as it processes input. On valid input, display the generated tree.
             Modify problem 4 so that it builds a parse tree as it processes input. On valid input, display the generated tree.
+            Answered 13 (a) see Question_13_1.fs 

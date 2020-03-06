@@ -19,6 +19,8 @@
       <Compile Include="Question 11.fs" />
       <Compile Include="Question 12.fs" />
       <Compile Include="Question_13_1.fs" />
+      <Content Include="Log.txt" />
+      <Compile Include="Question_13_2.fs" />
     </ItemGroup>
 
 </Project>

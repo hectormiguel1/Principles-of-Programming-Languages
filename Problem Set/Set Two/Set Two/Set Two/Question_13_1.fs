@@ -7,69 +7,57 @@ open System.Linq
 //   E -> i
 
 type TERMINAL = IF | THEN | ELSE | BEGIN | END | PRINT | SEMICOLON | ID | EOF
+
+ 
+//Change names to be more unique,
+// Add ends and semicolon branches 
 type 'a ParseTree =
-    | Leaf
-    | Parent of Tree: 'a ParseTree
-    | Print of ID:'a
-    | If of E:TERMINAL * THEN :'a ParseTree * ELSE :'a ParseTree
-    | Begin of S: 'a ParseTree * L: 'a ParseTree
-     
-let matchNextTocken token nextToken  =
-     if token = THEN || token = ELSE || token = BEGIN then
-          match nextToken with
-          | IF -> true
-          | BEGIN -> true
-          | PRINT -> true
-          | _ -> false
-          
-     elif token = SEMICOLON then
-          match nextToken with
-          | IF -> true
-          | BEGIN -> true
-          | PRINT -> true
-          | _ -> false 
-     elif token = IF then
-          match nextToken with
-          | ID -> true
-          | _ -> false
-      else false 
- 
-let rec getInnerTokens tokens innerTokens =
-     match tokens with
-     | [] -> if List.isEmpty innerTokens then None else Some(innerTokens, tokens)
-     | x::xs when x = END -> Some(innerTokens,xs) 
-     | x::xs when x <> END -> getInnerTokens xs (innerTokens@[x])
-                     
-let rec SProduction tokens =
-     match tokens with
-     | [] -> Some(Leaf)
-     | [x] when x = EOF -> Some(Leaf)
-     | x::y::ys -> match x with
-                    | IF -> let nextTokenMatch = matchNextTocken x y
-                            if nextTokenMatch
-                            then
-                                 let innerTokens = (getInnerTokens ys [])
-                                 let b::bs, remaining = if innerTokens <> None then innerTokens.Value else ([EOF],[EOF])
-                                 let innerTokens2 = getInnerTokens remaining []
-                                 let c::cs, remaining2 = if innerTokens2 <> None then innerTokens2.Value else ([EOF],[EOF])
-                                 Some (If(y,(SProduction bs).Value,(SProduction cs).Value))
-                            else None
-                            
-                    | BEGIN -> let innertokens = getInnerTokens ys []
-                               let inner::inners, remaining = if innertokens <> None then innertokens.Value else ([EOF],[EOF])
-                               Some (Begin((SProduction inners).Value, (LProduction remaining)))
-                    | PRINT ->  if y = ID then Some(Print y) else None
-                    | SEMICOLON -> Some((SProduction (y::ys)).Value)
-and LProduction = function
-     | [] -> Leaf
-     | x::xs -> match x with
-                | SEMICOLON -> (SProduction xs).Value
-                   
- 
+    | Branch_ID of ID: 'a 
+    | Print of ID: 'a ParseTree
+    | Branch_If of E: 'a ParseTree * THEN :'a ParseTree * ELSE :'a ParseTree
+    | Branch_Begin of S: 'a ParseTree * L: 'a ParseTree
+    | Branch_End
+    | Branch_Semicolon of S: 'a ParseTree * L: 'a ParseTree
+    | Branch_EOF 
+    
+let E = function
+    | [] -> None
+    | ID::xs -> Some(Branch_ID(ID), xs)
+    | _ -> None
+let eat terminal = function
+    | x::xs when x = terminal -> Some(xs)
+    | _ -> None 
+let rec S = function
+    | [EOF] -> None
+    | IF::xs -> let tmpHolder = xs |> E
+                let (e_tree,tail) = if tmpHolder <> None then tmpHolder.Value else (Branch_End,[EOF])
+                let tmpHolder = (tail |> eat THEN).Value |> S
+                let (then_tree, tail) = if tmpHolder <> None then tmpHolder.Value else (Branch_End,[EOF])
+                let tmpHolder = (tail |> eat ELSE).Value |> S
+                let (else_tree, tail) = if tmpHolder <> None then tmpHolder.Value else (Branch_End,[EOF])
+                Some(Branch_If(e_tree,then_tree,else_tree),tail)
+    | BEGIN::xs -> let tmpValue = xs |> S
+                   let (s_tree, tail) = if tmpValue <> None then tmpValue.Value else (Branch_End, [EOF])
+                   let tmpValue = tail |> L
+                   let (l_tree, tail) = if tmpValue <> None then tmpValue.Value else (Branch_End, [EOF])
+                   Some(Branch_Begin(s_tree, l_tree), tail)
+    | PRINT::xs -> let tmpHolder = xs |> E
+                   let (e_tree, tail) = if tmpHolder <> None then tmpHolder.Value else (Branch_End,[EOF])
+                   Some(Print(e_tree), tail)
+    | _ -> None 
+and L = function
+    | END::xs -> Some(Branch_End, xs)
+    | SEMICOLON::xs -> let tmpHolder = xs |> S
+                       let (s_tree, tail) = if tmpHolder <> None then tmpHolder.Value else (Branch_End, [EOF])
+                       let tmpHolder = tail |> L
+                       let (l_tree, tail) =  if tmpHolder <> None then tmpHolder.Value else (Branch_End, [EOF])
+                       Some(Branch_Semicolon(s_tree,l_tree), tail)
+    | _ -> None 
+    
 let errorHandler = function
      | None -> "Invalid Program Passed"
-     | Some x -> sprintf "Resulting Tree: %A" x
-     
+     | Some x -> match x with
+                 | (tree,remainer) -> sprintf "Resulting Tree: %A" tree
 let runner =
      let program1 = [IF;ID;THEN;IF;ID;THEN;PRINT;ID;ELSE;PRINT;ID;ELSE;BEGIN;PRINT;ID;END;EOF]
-     program1 |> SProduction |> errorHandler |> printf "%s\n"
+     program1 |> S |> errorHandler |> printf "%s \n"

@@ -1,0 +1,48 @@
+Total Commits: 114 
+Feb 17: 
+Started Working on Question 1 
+Answered Question 1
+Feb 19: 
+Updated Question 1 with comments 
+Started and Finished Question 2 
+Feb 28:
+Started work on Question 3, ran into some trouble validating the the input tokens 
+Cracked my head on the same issue for a couple hours (ended up working, not the way it was supposed to be done)
+Got it working (wrong design) after a few hours 
+Started working on question 4 
+Ran into even more trouble with this one, spent several hours trying to get it to work properly 
+Feb 29: 
+Fixed Question 4 and got it to a working state. 
+Started working on question # 5, question very easy compared to 3 and 4 
+March 1:
+Started work on question 6
+Reworked the transpose from coding 1, made it more generic 
+Designed the matrix multiplier to build it by row (over several commits)
+Answered Question 6 
+Made som Code cleanup before moving on 
+Answered Question 7 and 8 
+March 2: 
+Started working on Question 9  
+Answered Question 9 
+Started work on Question 10 
+Ran into trouble when div / 0 was encountered, no check built in 
+Answered Question 10 
+Started and Answered Question 11 
+Some more code cleanup and upkeep 
+March 3: 
+Started working on Question 12
+Ran into to trouble when detecting that the id was not in the tree 
+Fixed the Null Pointer Exception got the problem into a working state. 
+Some more code cleanup and upkeep 
+March 4: 
+Added some more comments to the code for better readability
+Stared working on Question 13. 
+Broke my head for several hours trying to wrap my head around it 
+ran into countless issues. 
+got it into a working state after it was explained in class. 
+Some more code cleanup and upkeep. 
+Redo question to fallow the new structure used in question 13, more efficient 
+    easier to read and fallow. 
+Further code cleanup and upkeep.  
+
+

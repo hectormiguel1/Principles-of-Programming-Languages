@@ -5,6 +5,7 @@
     <e p="$USER_HOME$/.Rider2019.3/system/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_Set Two.1961130765.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="Set Two" t="IncludeRecursive">
+        <e p="Log.txt" t="Include" />
         <e p="Question 10.fs" t="Include" />
         <e p="Question 11.fs" t="Include" />
         <e p="Question 12.fs" t="Include" />
@@ -15,6 +16,7 @@
         <e p="Question 9.fs" t="Include" />
         <e p="Question_1.fs" t="Include" />
         <e p="Question_13_1.fs" t="Include" />
+        <e p="Question_13_2.fs" t="Include" />
         <e p="Question_3.fs" t="Include" />
         <e p="Questions" t="Include" />
         <e p="Set Two.fsproj" t="IncludeRecursive" />
