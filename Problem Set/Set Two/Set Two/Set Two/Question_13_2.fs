@@ -52,10 +52,10 @@ and F = function
                 Some(e_tree, tail)
     | LPAREN::xs -> let tmpHolder = xs |> E
                     let (e_tree, tail) = if tmpHolder <> None then tmpHolder.Value else (Br_Id, [EOF])
-                    let tmpHolder = tail |> eat RPAREN
-                    let tail = if tmpHolder <> None then tmpHolder.Value else [EOF]
                     Some(e_tree, tail)
-    | RPAREN::xs -> E xs
+    | RPAREN::xs -> let tmpHolder = E xs
+                    let (e_tree, tail) = if tmpHolder <> None then tmpHolder.Value else (Br_Id, [])
+                    Some(e_tree, tail)
     | _ -> None 
 let errorHandler = function
      | None -> "Invalid Program Passed"
@@ -67,8 +67,8 @@ let runner =
     let program2 = [ID;SUB;ID;MUL;ID;EOF]
     let program3 = [LPAREN;ID;SUB;ID;RPAREN;MUL;ID;EOF]
     printf "Is program: %A valid? "program1
-   // program1 |> E |> errorHandler |> printf "%s \n"
+    program1 |> E |> errorHandler |> printf "%s \n"
     printf "Is program: %A valid? "program2
-   // program2 |> E |> errorHandler |> printf "%s \n"
+    program2 |> E |> errorHandler |> printf "%s \n"
     printf "Is program: %A valid? "program3
     program3 |> E |> errorHandler |> printf "%s \n"

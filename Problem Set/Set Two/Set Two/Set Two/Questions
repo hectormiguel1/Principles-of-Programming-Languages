@@ -250,3 +250,22 @@ Write the syntax checker using F#, but you may only use functional programming a
             Modify problem 3 so that it builds a parse tree as it processes input. On valid input, display the generated tree.
             Modify problem 4 so that it builds a parse tree as it processes input. On valid input, display the generated tree.
             Answered 13 (a) see Question_13_1.fs 
+     
+
+    14. Using the natural semantics from the lecture notes, show all the steps for verifying each judgement. 
+    [When writing derivations, I tend to set a variable to the current state of memory, to save typing.]
+    [My derivations are six lines, and seven lines.]
+
+        a.  ({i=5; j=8}, i := 2*j + i) => {i=21; j=8}
+        b.   ({i=3; j=8}, if (2*i > j) then i := 2*j else j := 2*i) => {i=3; j=6}
+        
+        a. (M,2) => 2 
+           (M,j) => 8
+           (M,i) => 5
+           (M, 2 * j) => 16
+           (M, (2 *j) + i) => 21 
+           (M, i := 21) => M' {i=21; j=8}
+
+    
+    
+
