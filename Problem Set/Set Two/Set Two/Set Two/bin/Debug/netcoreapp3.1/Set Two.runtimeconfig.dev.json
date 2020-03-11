@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/home/hector/.dotnet/store/|arch|/|tfm|",
-      "/home/hector/.nuget/packages"
+      "/home/hectorr/.dotnet/store/|arch|/|tfm|",
+      "/home/hectorr/.nuget/packages"
     ]
   }
 }
